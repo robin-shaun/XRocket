@@ -39,6 +39,8 @@ STATUS_FIRST_FRAME = 0  # 第一帧的标识
 STATUS_CONTINUE_FRAME = 1  # 中间帧标识
 STATUS_LAST_FRAME = 2  # 最后一帧的标识
 
+count = 0
+
 
 class STT_Ws_Param(object):
     # 初始化
@@ -169,22 +171,45 @@ def on_open(ws):
 
     thread.start_new_thread(run, ())
 
-def stt(wsParam):
+def stt(wsParam, r):
     global wsparam, result
+    result = r
     wsparam = wsParam
     websocket.enableTrace(False)
     wsUrl = wsParam.create_url()
     ws = websocket.WebSocketApp(wsUrl, on_message=on_message, on_error=on_error, on_close=on_close)
     ws.on_open = on_open
     ws.run_forever(sslopt={"cert_reqs": ssl.CERT_NONE})
-    print(result)
-    return result
+    new_result = ''
+    for i in list(result):
+        if i == '1':
+            i = '一'
+        elif i == '2':
+            i = '二'
+        elif i == '3':
+            i = '三'
+        elif i == '4':
+            i = '四'
+        elif i == '5':
+            i = '五'
+        elif i == '6':
+            i = '六'
+        elif i == '7':
+            i = '七'
+        elif i == '8':
+            i = '八'
+        elif i == '9':
+            i = '九'
+        new_result = new_result + i            
+            
+    print(new_result)
+    return new_result
 
 if __name__ == "__main__":
     # 测试时候在此处正确填写相关信息即可运行
-    result = ''
-    count = 0
+    r = ''
     wsParam = STT_Ws_Param(APPID='5e2faa83', APIKey='58c05763b09a8d85d9a2f5645f981824',
                        APISecret='1d83a8338cc3e0188c880b9ab514770e',
                        AudioFile=r'tmp.wav')
-    stt(wsParam)
+    r=stt(wsParam, r)
+    print(r)
