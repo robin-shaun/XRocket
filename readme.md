@@ -1,4 +1,4 @@
-# X火箭工程
+# XRocket工程
 
 ## 1.军事知识问答系统
 
@@ -7,4 +7,4 @@
 ```bash
 python3 main.py
 ```
-
+项目视频见[https://www.yuque.com/xrocket/demo/qaonmilitarykg]( https://www.yuque.com/xrocket/demo/qaonmilitarykg )
