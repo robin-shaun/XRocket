@@ -153,7 +153,7 @@ class GUI(QWidget):
         voiceFileName = 'tmp'
         print("voice input begin", self.voiceInputBtn.isDown())
         res = audio_2_str(voiceFileName)
-        s = '<img src="/home/robin/RockeX/gui/voice.png"/>'
+        s = '<img src="/home/robin/XRocket/gui_config/voice.png"/>'
         if res:
             self.textEdit.setHtml(s)
         else:
@@ -259,11 +259,11 @@ class GUI(QWidget):
             question = self.textEdit.toPlainText()
             if  question == '':
                 return
-            s = '<div align="right" style=""><img src="/home/robin/RockeX/gui/q.png" width="30" height="30" />'
+            s = '<div align="right" style=""><img src="/home/robin/XRocket/gui_config/q.png" width="30" height="30" />'
             s = s + question
             s = s + '</div>'
         elif self.sendState == 1:
-            s = '<img src="/home/robin/RockeX/gui/q.png" width="30" height="30" /><img src="'+self.imgPath+'" width="200" height="200"/>'
+            s = '<img src="/home/robin/XRocket/gui_config/q.png" width="30" height="30" /><img src="'+self.imgPath+'" width="200" height="200"/>'
             img = Image.open(self.imgPath).convert('RGB')
             question = forward.net_foward(img)
         elif self.sendState == 2:
@@ -271,7 +271,7 @@ class GUI(QWidget):
                         APISecret='1d83a8338cc3e0188c880b9ab514770e',
                         AudioFile=r'tmp.wav')
             stt_result = stt(stt_wsParam,'')
-            s = '<img src="/home/robin/RockeX/gui/q.png" width="30" height="30" /><img src="/home/robin/RockeX/gui/voice.png" width="100" height="30"/>' + stt_result
+            s = '<img src="/home/robin/XRocket/gui_config/q.png" width="30" height="30" /><img src="/home/robin/XRocket/gui_config/voice.png" width="100" height="30"/>' + stt_result
             question = stt_result
         
         self.showEdit.append(s)
@@ -285,12 +285,12 @@ class GUI(QWidget):
 
     def initText(self):
         print("initText")
-        s = '<div style=""><img src="/home/robin/RockeX/gui/smile.jpg" width="30" height="30" />请问需要什么帮助？</div>'
+        s = '<div style=""><img src="/home/robin/XRocket/gui_config/smile.jpg" width="30" height="30" />请问需要什么帮助？</div>'
         self.text2speech('请问需要什么帮助？')
         self.showEdit.append(s)
     
     def resText(self, text):
-        s = '<div style=""><img src="/home/robin/RockeX/gui/smile.jpg" width="30" height="30" />'+text+'</div>'
+        s = '<div style=""><img src="/home/robin/XRocket/gui_config/smile.jpg" width="30" height="30" />'+text+'</div>'
         self.showEdit.append(s)
         
     def clearAction(self):
